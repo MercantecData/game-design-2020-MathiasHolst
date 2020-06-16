@@ -5,7 +5,9 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public float speed = 4;
-
+    public Transform Gun;
+    public GameObject skudPrefab;
+    public float force = 20f;
     private Rigidbody2D rigidbody;
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,18 @@ public class Movement : MonoBehaviour
         position.x += speed * Time.deltaTime * inputHorizontal; //frame time independant
         position.y += speed * Time.deltaTime * inputVertical;
         rigidbody.MovePosition(position);
+
+        if(Input.GetButtonDown("Shoot"))
+        {
+            Fire();
+        }
+    }
+
+    void Fire()
+    {
+        GameObject skud = Instantiate(skudPrefab, Gun.position, Gun.rotation);
+        Rigidbody2D rigid = skud.GetComponent<Rigidbody2D>();
+        rigid.velocity = skud.transform.up * 10;
     }
     /*
      * Box collider 2D til at lave mur objekter som blokere brugeren
