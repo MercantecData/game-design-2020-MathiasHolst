@@ -10,14 +10,14 @@ public class Ai : MonoBehaviour
     public LayerMask mask;
 
     public float speed = 4;
-    public float range = 15;
-
+    public float range = 5;
+    public Transform player;
     public Transform waypoint1;
     public Transform waypoint2;
     // Start is called before the first frame update
     void Start()
     {
-        
+        nextwaypoint = waypoint1;
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class Ai : MonoBehaviour
     {
         if(currentState == "Patrol")
         {
-            Vector2 nextposition = Vector2.MoveTowards(transform.position, nextwaypoint.position, Time.deltaTime * speed);
+            Vector3 nextposition = Vector3.MoveTowards(transform.position, nextwaypoint.position, Time.deltaTime * speed);
             transform.position = nextposition;
             if(transform.position == nextwaypoint.position)
             {
@@ -40,12 +40,13 @@ public class Ai : MonoBehaviour
             if(targetAquired()){
                 currentState = "Attack";
             }
-            //transform.up = transform.position-((Vector3) nextposition);
+            transform.up = transform.position-((Vector3) nextposition);
         }   
         else if (currentState == "Attack")
         {
             //Shoot
-            print("Shoot");
+            print("GOT EMM");
+
 
             if(!targetAquired()){
                 currentState = "Patrol";
@@ -54,17 +55,18 @@ public class Ai : MonoBehaviour
     }
 
     bool targetAquired() {
-        GameObject targetGo = GameObject.FindGameObjectWithTag("Player");
+        GameObject target = GameObject.FindGameObjectWithTag("Player");
         bool inRange = false;
         bool inVision = false;
 
-        if(Vector2.Distance(targetGo.transform.position, transform.position < range)){
+        if(Vector2.Distance(target.transform.position, transform.position) < range){
             inRange = true;
         }
 
-        var linecast = Physics2D.Linecast(transform.position, targetGo.transform.position, mask);
+        var linecast = Physics2D.Linecast(transform.position, target.transform.position, mask);
         if(linecast.transform == null){
             inVision = true;
+            Vector3.MoveTowards(transform.position, player.position, Time.deltaTime * speed);
         }
 
         return inRange && inVision;
