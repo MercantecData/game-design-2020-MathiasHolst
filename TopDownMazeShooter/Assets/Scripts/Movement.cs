@@ -31,6 +31,7 @@ public class Movement : MonoBehaviour
         {
             Fire();
         }
+        
     }
 
     void Fire()

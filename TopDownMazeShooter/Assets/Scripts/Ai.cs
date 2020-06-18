@@ -6,6 +6,8 @@ public class Ai : MonoBehaviour
 {
     private string currentState = "Patrol";
     private Transform nextwaypoint;
+    private Rigidbody2D rigidbody;
+    private Vector2 move;
 
     public LayerMask mask;
 
@@ -18,6 +20,7 @@ public class Ai : MonoBehaviour
     void Start()
     {
         nextwaypoint = waypoint1;
+        rigidbody = this.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -44,14 +47,18 @@ public class Ai : MonoBehaviour
         }   
         else if (currentState == "Attack")
         {
-            //Shoot
-            print("GOT EMM");
+            Vector3 direction = player.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; //Dette bruges til at finde en vinkel så fjenden kan rotere præcis derhen hvor spilleren befinder sig
+            rigidbody.rotation = angle;
+            direction.Normalize(); //Normalize bruges til at direction værdien forbliver imellem -1 og 1
+            move = direction;
 
-
+            moveChar(move);
             if(!targetAquired()){
                 currentState = "Patrol";
             }
         }
+
     }
 
     bool targetAquired() {
@@ -70,5 +77,9 @@ public class Ai : MonoBehaviour
         }
 
         return inRange && inVision;
+    }
+
+    void moveChar(Vector2 direction){
+        rigidbody.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
     }
 }

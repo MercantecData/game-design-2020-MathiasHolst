@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class collision : MonoBehaviour
 {
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        Destroy(gameObject);
-    }
 
     void OnTriggerEnter2D(Collider2D other)
     {   
-        Destroy(other.gameObject);
-        Destroy(gameObject);
+        if(other.CompareTag("Wall")){
+            print("You walked into a wall");
+        }else {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        } 
     }
 }
