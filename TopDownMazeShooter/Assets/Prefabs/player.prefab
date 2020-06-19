@@ -128,7 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b9aab4ddf4784458c634fd0aa61610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  coolDown: 2
+  coolDownTimer: 0
+  speed: 7
   Gun: {fileID: 3788232239585288004}
   skudPrefab: {fileID: 5076823789799570006, guid: c9207f0377de3c14b95523fb227d157a,
     type: 3}

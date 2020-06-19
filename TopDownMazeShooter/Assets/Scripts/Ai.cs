@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Ai : MonoBehaviour
 {
+    public float coolDown = 5;
+    private float coolDownTimer;
     private string currentState = "Patrol";
     private Transform nextwaypoint;
     private Rigidbody2D rigidbody;
@@ -21,11 +23,23 @@ public class Ai : MonoBehaviour
     {
         nextwaypoint = waypoint1;
         rigidbody = this.GetComponent<Rigidbody2D>();
+        coolDownTimer = coolDown;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(coolDownTimer > 0)
+        {
+            coolDownTimer -= Time.deltaTime;
+        } else if(coolDownTimer < 0){
+            coolDownTimer = 0;           
+        }
+        if(coolDownTimer == 0 && speed < 10){
+            speed += 1;
+            coolDownTimer = coolDown;
+        }
+
         if(currentState == "Patrol")
         {
             Vector3 nextposition = Vector3.MoveTowards(transform.position, nextwaypoint.position, Time.deltaTime * speed);

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    public float coolDown = 1;
+    private float coolDownTimer;
     public float speed = 4;
     public Transform Gun;
     public GameObject skudPrefab;
@@ -27,9 +29,17 @@ public class Movement : MonoBehaviour
         position.y += speed * Time.deltaTime * inputVertical;
         rigidbody.MovePosition(position);
 
-        if(Input.GetButtonDown("Shoot"))
+        if(coolDownTimer > 0)
+        {
+            coolDownTimer -= Time.deltaTime;
+        } else if(coolDownTimer < 0){
+            coolDownTimer = 0;           
+        }
+
+        if(Input.GetButtonDown("Shoot") && coolDownTimer == 0)
         {
             Fire();
+            coolDownTimer = coolDown;
         }
         
     }
