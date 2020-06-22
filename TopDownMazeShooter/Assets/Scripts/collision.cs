@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class collision : MonoBehaviour
 {
+    
+    public Text points;
+
+    private int i = 1;
 
     void OnTriggerEnter2D(Collider2D other)
     {   
@@ -12,6 +17,7 @@ public class collision : MonoBehaviour
         }else {
             Destroy(other.gameObject);
             Destroy(gameObject);
+            points.text = i.ToString();
         } 
     }
 }

@@ -29,6 +29,7 @@ public void Update()
         if(spiller.active){
             ui_text.color = Color.green;
             ui_text.text = "You Win";
+            Time.timeScale = 0;
         } else {
             ui_text.text = "You Lose";
 
