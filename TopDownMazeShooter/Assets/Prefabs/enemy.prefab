@@ -144,12 +144,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDown: 5
-  coolDownTimer: 0
   mask:
     serializedVersion: 2
     m_Bits: 0
   speed: 3
-  range: 5
+  range: 50
   player: {fileID: 0}
   waypoint1: {fileID: 0}
   waypoint2: {fileID: 0}

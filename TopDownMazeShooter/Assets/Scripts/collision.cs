@@ -7,7 +7,7 @@ public class collision : MonoBehaviour
 {
     
     public Text points;
-
+    public GameObject onHit;
     private int i = 1;
 
     void OnTriggerEnter2D(Collider2D other)
@@ -15,6 +15,8 @@ public class collision : MonoBehaviour
         if(other.CompareTag("Wall")){
             print("You walked into a wall");
         }else {
+            GameObject effect = Instantiate(onHit, transform.position, Quaternion.identity);
+            Destroy(effect, 1);
             Destroy(other.gameObject);
             Destroy(gameObject);
             points.text = i.ToString();

@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f098f9cbe33874babb8affd431f2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onHit: {fileID: 2099983142453324195, guid: 9e272b7b7521b524dbc40c63f6ed5098, type: 3}
 --- !u!114 &-502712500108412330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,3 +158,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: {fileID: 0}
+  onHit: {fileID: 2099983142453324195, guid: 9e272b7b7521b524dbc40c63f6ed5098, type: 3}
