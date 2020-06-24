@@ -11,6 +11,8 @@ public class Movement : MonoBehaviour
     public GameObject skudPrefab;
     public float force = 20f;
     private Rigidbody2D rigidbody;
+
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {

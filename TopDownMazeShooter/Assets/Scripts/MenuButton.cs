@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RestartButton : MonoBehaviour
+public class MenuButton : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class RestartButton : MonoBehaviour
         
     }
 
-    public void Restart(){
-        SceneManager.LoadScene(1);
+    public void BackToMenu(){
+        SceneManager.LoadScene(0);
     }
 }
