@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RestartButton : MonoBehaviour
+public class loadGameModes : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -17,10 +17,13 @@ public class RestartButton : MonoBehaviour
         
     }
 
-    public void Restart(){
-        Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
-        SceneManager.LoadScene(sceneName);
+    public void loadSurvival(){
+        SceneManager.LoadScene("Game");
+        Time.timeScale = 1;
+    }
+
+    public void loadEndurance(){
+        SceneManager.LoadScene("Game2");
         Time.timeScale = 1;
     }
 }

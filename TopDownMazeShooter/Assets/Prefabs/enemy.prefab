@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3415262557618097310}
   m_Layer: 0
   m_Name: enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,9 +146,10 @@ MonoBehaviour:
   coolDown: 5
   mask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   speed: 3
   range: 50
-  player: {fileID: 0}
-  waypoint1: {fileID: 0}
+  player: {fileID: 7650331936275759693, guid: 85efd151461bb5640b9c806cea5f288c, type: 3}
+  waypoint1: {fileID: 4224120801617978161, guid: 2d773e3ffc5928b499767774f7ef31ef,
+    type: 3}
   waypoint2: {fileID: 0}
